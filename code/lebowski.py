@@ -3,6 +3,34 @@ lebowski.py
 @author Matt Paterson, hello@hireMattPaterson.com
 '''
 
+def scaled_data_split(dataframe, target):
+    '''
+    returns six dataframes and series, X_train, X_train_sc, 
+            X_val, X_val_sc, y_train, y_val in that order
+            for use in scaled classification models and NN
+    df is a pandas dataframe
+    target is a string literal, should exactly match the column header from
+            the dataframe that will be the predicted class of the model
+    Employs the train_test_split function and the StandardScalar() as well
+    '''
+    import pandas as pd
+    from sklearn.preprocessing       import StandardScaler
+    from sklearn.model_selection     import train_test_split
+    
+    X = dataframe.drop(columns='koi_disposition')
+    y = dataframe['koi_disposition']
+
+    X_train, X_val, y_train, y_val = train_test_split(X, y,
+                                                      test_size = .2, 
+                                                      random_state = 42, 
+                                                      stratify=y)
+
+    sc = StandardScaler()
+    X_train_sc = sc.fit_transform(X_train)
+    X_val_sc = sc.transform(X_val)
+    
+    return X_train, X_train_sc, X_val, X_val_sc, y_train, y_val
+
 def waste(dataframe):
     '''
     unsure about what to do with this function, may delete
