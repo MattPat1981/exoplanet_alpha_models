@@ -1,0 +1,30 @@
+﻿# This file was produced by the NASA Exoplanet Archive  http://exoplanetarchive.ipac.caltech.edu
+# Sun Aug 30 14:22:21 2020
+#
+# COLUMN toi:            TESS Object of Interest
+# COLUMN toipfx:         TESS Object of Interest Prefix
+# COLUMN tid:            TESS Input Catalog ID
+# COLUMN ctoi_alias:     Community TESS Object of Interest Alias
+# COLUMN pl_pnum:        Pipeline Signal ID
+# COLUMN tfopwg_disp:    TFOPWG Dispostion (CP | FP | KP | PC)
+# COLUMN rastr:          RA [sexagesimal]
+# COLUMN ra:             RA [deg]
+# COLUMN decstr:         Dec [sexagesimal]
+# COLUMN dec:            Dec [deg]
+# COLUMN st_pmra:        PMRA [mas/yr]
+# COLUMN st_pmdec:       PMDec [mas/yr]
+# COLUMN pl_tranmid:     Planet Transit Midpoint Value [BJD]
+# COLUMN pl_orbper:      Planet Orbital Period Value [days]
+# COLUMN pl_trandurh:    Planet Transit Duration Value [hours]
+# COLUMN pl_trandep:     Planet Transit Depth Value [ppm]
+# COLUMN pl_rade:        Planet Radius Value [R_Earth]
+# COLUMN pl_insol:       Planet Insolation Value [Earth flux]
+# COLUMN pl_eqt:         Planet Equilibrium Temperature Value [K]
+# COLUMN st_tmag:        TESS Magnitude
+# COLUMN st_dist:        Stellar Distance [pc]
+# COLUMN st_teff:        Stellar Effective Temperature Value [K]
+# COLUMN st_logg:        Stellar log(g) Value [cm/s**2]
+# COLUMN st_rad:         Stellar Radius Value [R_Sun]
+# COLUMN toi_created:    TOI Created Date
+# COLUMN rowupdate:      Date Modified
+#
