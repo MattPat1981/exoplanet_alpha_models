@@ -48,13 +48,14 @@ def scaled_data_split(dataframe, target):
 # base code From Matt Brems, Tim Book, and Justin Pounders
 # improved by Matt Paterson
 def display_metrics(model_name, metric):
-    import matplotlib.pyplot as plt 
+    import matplotlib.pyplot as plt
     train_loss = model_name.history[metric]
     test_loss = model_name.history['val_' + metric]
 
     plt.figure(figsize=(12, 8))
     plt.plot(train_loss, label='Training ' + metric, color='navy')
     plt.plot(test_loss, label='Validation val_' + metric, color='fuchsia')
+    graph_words('black')
     plt.legend();
 
 # Use for any graph that needs the wording adjusted
@@ -215,7 +216,7 @@ def show_details(dataframe):
 
 
 
-def heatmap_this(df, features, title):
+def heatmap_this(df, features, title, word_color='black'):
     # Heatmap style borrowed from Ryley Dallas
     '''
     returns 1 if no errors
@@ -228,11 +229,7 @@ def heatmap_this(df, features, title):
     import seaborn as sns
     import matplotlib.pyplot as plt
 
-    word_color = 'black'
-    plt.rcParams.update({'text.color' : word_color,
-                     'axes.labelcolor' : word_color, 'xtick.color' : word_color,
-                    'ytick.color' : word_color})
-
+    graph_words(word_color)
 
     plt.figure(figsize=(21, 12))
     sns.heatmap(df[features].corr(),
