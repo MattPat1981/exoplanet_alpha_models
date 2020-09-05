@@ -2,42 +2,62 @@
 lebowski.py
 @author Matt Paterson, hello@hireMattPaterson.com
 '''
-
+# Use on any dataset that needs to use StandardScaler
 def scaled_data_split(dataframe, target):
     '''
-    returns six dataframes and series, X_train, X_train_sc, 
+    returns six dataframes and series, X_train, X_train_sc,
             X_val, X_val_sc, y_train, y_val in that order
             for use in scaled classification models and NN
     df is a pandas dataframe
     target is a string literal, should exactly match the column header from
             the dataframe that will be the predicted class of the model
+    *** Need to update this function to allow for toggling 'stratify':
+    stratify if True sets stratify=y in the train_test_split function
+
     Employs the train_test_split function and the StandardScalar() as well
     '''
     import pandas as pd
     from sklearn.preprocessing       import StandardScaler
     from sklearn.model_selection     import train_test_split
-    
-    X = dataframe.drop(columns='koi_disposition')
-    y = dataframe['koi_disposition']
+
+    X = dataframe.drop(columns=target)
+    y = dataframe[target]
 
     X_train, X_val, y_train, y_val = train_test_split(X, y,
-                                                      test_size = .2, 
-                                                      random_state = 42, 
-                                                      stratify=y)
+    test_size = .2,
+    random_state = 42,
+    stratify=y)
 
+    ### Uncomment below branch statement and delete above 'ifs' when complete
+    # if stratify:
+    #     X_train, X_val, y_train, y_val = train_test_split(X, y,
+    #     test_size = .2,
+    #     random_state = 42,
+    #     stratify=y)
+    # else:
+    #     X_train, X_val, y_train, y_val = train_test_split(X, y,
+    #     test_size = .2,
+    #     random_state = 42)
+    #
     sc = StandardScaler()
     X_train_sc = sc.fit_transform(X_train)
     X_val_sc = sc.transform(X_val)
-    
+
     return X_train, X_train_sc, X_val, X_val_sc, y_train, y_val
 
-def waste(dataframe):
-    '''
-    unsure about what to do with this function, may delete
-    '''
-    return 0
+# base code From Matt Brems, Tim Book, and Justin Pounders
+# improved by Matt Paterson
+def display_metrics(model_name, metric):
+    import matplotlib.pyplot as plt 
+    train_loss = model_name.history[metric]
+    test_loss = model_name.history['val_' + metric]
 
+    plt.figure(figsize=(12, 8))
+    plt.plot(train_loss, label='Training ' + metric, color='navy')
+    plt.plot(test_loss, label='Validation val_' + metric, color='fuchsia')
+    plt.legend();
 
+# Use for any graph that needs the wording adjusted
 def graph_words(word_color):
     '''
     establishes the word color for a graph to more easily transfer to ppt slides
@@ -68,6 +88,7 @@ def word_count(string):
     return len(str_list)
 
 
+# Use for NLP -- this function currently is specific for reddit API
 def create_lexicon(subreddit, db_length=1_000, size=500, post_type='submission'):
     '''
     returns a dataframe of the information found at the pushshift api for reddit
