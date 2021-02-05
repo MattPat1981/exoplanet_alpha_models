@@ -6,6 +6,8 @@ https://hireMattPaterson.com
 # Read about how we discovered the newest Exoplanet, SumNiva! 
 <i>kepid 5709725, located in the Summer Triangle</i>
 
+# Watch the presentation video <a href='https://www.hiremattpaterson.com/projects'>here</a>
+
 ### The Data Science Problem:
 ***Can we compare the data of currently unconfirmed Kepler Objects of Interest to that of Confirmed Exoplanets and Confirmed non-exoplanet observations to predict the existence of planets orbiting nearby stars?***
 
